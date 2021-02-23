@@ -4,19 +4,20 @@ import cn from "classnames";
 
 import { jupiterjak } from "../../assets/data/jupiterjak.js";
 
-import styles from './_index.css';
+import { ThumbListStyled } from "./styled.js";
 
-const ThumbList = ({ className }) => {
-  const outputClassName = cn(className, styles.ThumbList);
+const ThumbList = ({ children, className }) => {
   const thumbs = jupiterjak.map((item) => <img src={item.thumb} alt="" />);
   return (
-    <div className={outputClassName}>
+    <ThumbListStyled className={cn(className)} data-element="thumb-list">
       {thumbs}
-    </div>
+      {children}
+    </ThumbListStyled>
   );
 }
 
 ThumbList.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string
 };
 

@@ -1,22 +1,20 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import cn from "classnames";
+import { Helmet } from "react-helmet";
 
-import './_index.scss';
+import { HomeStyled } from "./styled.js";
 
-const Home = ({ className, children }) => {
-  const outputClassName = cn(className, Home);
+const Home = ({ children, className }) => {
   return (
-    <div className={outputClassName}>
-      <Helmet title="MARK S. FISHER" />
-      Home
-    </div>
+    <HomeStyled className={cn(className)} data-element="home">
+      {children}
+    </HomeStyled>
   );
 }
 
 Home.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string
 };
 

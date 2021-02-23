@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from "prop-types";
 import cn from "classnames";
 
-import './_index.scss';
+import { ContentStyled } from "./styled.js";
 
-const Content = ({ className, children }) => {
+const Content = ({ children, className }) => {
   const outputClassName = cn(className, Content);
   return (
-    <div className={outputClassName}>
+    <ContentStyled className={cn(className)} data-element="content">
       {children}
-    </div>
+    </ContentStyled>
   );
 }
 
 Content.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string
 };
 

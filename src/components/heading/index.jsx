@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import cn from "classnames";
 
-import './_index.scss';
+import { HeadingStyled } from "./styled.js";
 
-const Heading = ({ children }) => {
+const Heading = ({ bgImage, children, className }) => {
   return (
-    <h1 className="Heading">
+    <HeadingStyled bgImage={bgImage} className={cn(className)} data-element="heading">
       {children}
-    </h1>
+    </HeadingStyled>
   );
 }
 
 Heading.propTypes = {
-  children: PropTypes.string
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 Heading.defaultProps = {};

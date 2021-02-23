@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import cn from "classnames";
 
-import './_index.scss';
+import { FooterStyled } from "./styled.js";
 
-const Footer = ({ children }) => {
+const Footer = ({ children, className }) => {
   return (
-    <div className="Footer">
+    <FooterStyled className={cn(className)} data-element="footer">
       {children}
-    </div>
+    </FooterStyled>
   );
 }
 
 Footer.propTypes = {
-  children: PropTypes.string
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 Footer.defaultProps = {};

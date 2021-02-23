@@ -1,27 +1,29 @@
 import React from "react";
-import {
-  Link
-} from "react-router-dom";
 import PropTypes from "prop-types";
+import cn from "classnames";
 
 import { nav } from "../../assets/data/nav.js";
 
-import "./_index.scss";
+import { NavStyled, NavItemStyled, NavLinkStyled } from "./styled.js";
 
-const Nav = () => {
+const Nav = ({className}) => {
   return (
-    <ul className="Nav">
+    <NavStyled className={cn(className)}data-element="nav">
       {nav.map(item => (
-        <Link to={item.url} key={item.text}>
-          <li className="NavItem" key={item.text}>{item.text}</li>
-        </Link>
+        <NavItemStyled key={item.text}>
+          <NavLinkStyled to={item.url} key={item.text}>
+            {item.text}
+          </NavLinkStyled>
+        </NavItemStyled>
       ))}
-    </ul>
+    </NavStyled>
   );
 }
 
 Nav.propTypes = {
-  className: PropTypes.string
+  children: PropTypes.node,
+  className: PropTypes.string,
+  to: PropTypes.string
 };
 
 Nav.defaultProps = {};

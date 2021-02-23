@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import cn from "classnames";
+import { Helmet } from "react-helmet";
 
-import './_index.scss';
+import { Particle17Styled } from "./styled.js";
 
-const Particle17 = ({ className, children }) => {
-  const outputClassName = cn(className, Particle17);
+const Particle17 = ({ children, className }) => {
   return (
-    <div className={outputClassName}>
-      <Helmet title="MARK S. FISHER: PARTICLE 17" />
-      Particle17 here
-    </div>
+    <Particle17Styled className={cn(className)} data-element="particle-17">
+      <Helmet title={"Mark S. Fisher - Particle 17"} />
+      {children}
+    </Particle17Styled>
   );
 }
 
 Particle17.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string
 };
 

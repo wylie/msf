@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import cn from "classnames";
+// import { Helmet } from "react-helmet";
 
-import './_index.scss';
+import Helmet from "../../components/helmet/index.jsx";
 
-const PlutoPlot = ({ className, children }) => {
-  const outputClassName = cn(className, PlutoPlot);
+import { plutoplot } from "../../assets/data/plutoplot.js";
+
+import { PlutoPlotStyled } from "./styled.js";
+
+const PlutoPlot = ({ children, className}) => {
+  console.log("data", plutoplot);
   return (
-    <div className={outputClassName}>
-      <Helmet title="MARK S. FISHER: PLUTO PLOT" />
-      Pluto Plot here
-    </div>
+    <PlutoPlotStyled className={cn(className)} data-element="pluto-plot">
+      <Helmet data={plutoplot} />
+      {children}
+    </PlutoPlotStyled>
   );
 }
 
 PlutoPlot.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string
 };
 

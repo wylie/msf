@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import cn from "classnames";
+import { Helmet } from "react-helmet";
 
-import './_index.scss';
+import { JupiterjakStyled } from "./styled.js";
 
-const JupiterJak = ({ className, children }) => {
-  const outputClassName = cn(className, JupiterJak);
+const JupiterJak = ({ children, className}) => {
   return (
-    <div className={outputClassName}>
-      <Helmet title="MARK S. FISHER: JUPITER JAK" />
-      JupiterJak here
-    </div>
+    <JupiterjakStyled className={cn(className)} data-element="jupiter-jak">
+      <Helmet title={"Mark S. Fisher - Jupiter Jak"} />
+      {children}
+    </JupiterjakStyled>
   );
 }
 
 JupiterJak.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string
 };
 

@@ -1,20 +1,25 @@
-const jupiterjak = [
-  {
-    thumb: "./src/assets/image/aw-yeah.gif",
-    image: "./src/assets/image/aw-yeah.gif"
+const jupiterjak = {
+  page: {
+    title: "Mark S. Fisher - Jupiter Jak"
   },
-  {
-    thumb: "./src/assets/image/aw-yeah.gif",
-    image: "./src/assets/image/aw-yeah.gif"
-  },
-  {
-    thumb: "./src/assets/image/aw-yeah.gif",
-    image: "./src/assets/image/aw-yeah.gif"
-  },
-  {
-    thumb: "./src/assets/image/aw-yeah.gif",
-    image: "./src/assets/image/aw-yeah.gif"
-  }
-];
+  items: [
+    {
+      thumb: "./src/assets/image/aw-yeah.gif",
+      image: "./src/assets/image/aw-yeah.gif"
+    },
+    {
+      thumb: "./src/assets/image/aw-yeah.gif",
+      image: "./src/assets/image/aw-yeah.gif"
+    },
+    {
+      thumb: "./src/assets/image/aw-yeah.gif",
+      image: "./src/assets/image/aw-yeah.gif"
+    },
+    {
+      thumb: "./src/assets/image/aw-yeah.gif",
+      image: "./src/assets/image/aw-yeah.gif"
+    }
+  ]
+};
 
 export { jupiterjak };

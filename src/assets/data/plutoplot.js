@@ -1,4 +1,7 @@
 const plutoplot = {
+  page: {
+    title: "Mark S. Fisher - Pluto Poops"
+  },
   items: [
     {
       thumb: "plutoplot",

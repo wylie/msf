@@ -12,14 +12,14 @@ const nav = [
     url: "/"
   },
   {
-    text: "Illustration",
-    component: Illustration,
-    url: "/illustration"
-  },
-  {
     text: "Comics",
     component: Comics,
     url: "/comics"
+  },
+  {
+    text: "Illustration",
+    component: Illustration,
+    url: "/illustration"
   },
   {
     text: "JupiterJak",

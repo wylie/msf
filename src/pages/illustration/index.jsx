@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import cn from "classnames";
+import { Helmet } from "react-helmet";
 
-import './_index.scss';
+import { IllustrationStyled } from "./styled.js";
 
-const Illustration = ({ className, children }) => {
-  const outputClassName = cn(className, Illustration);
+const Illustration = ({ children, className }) => {
   return (
-    <div className={outputClassName}>
-      <Helmet title="MARK S. FISHER: ILLUSTRATION" />
-      Illustrations here
-    </div>
+    <IllustrationStyled className={cn(className)} data-element="illustration">
+      <Helmet title={"Mark S. Fisher - Illustration"} />
+      {children}
+    </IllustrationStyled>
   );
 }
 
 Illustration.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string
 };
 
