@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import jupiter from  "../assets/jupiterjak/jupiter.png";
+---
+
+<Layout>
+  <div>
+    <img src={jupiter.src} alt="Jupiter Jak, Sales Czar to the Solar System" />
+  </div>
+</Layout>
+
+<style>
+  div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: #231f20 url('../assets/jupiterjak/stars.png');
+  }
+  img {
+    width: 800px;
+    height: 600px;
+  }
+</style>

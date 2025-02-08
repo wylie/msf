@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+  <div class="wrap">
+    <div class="thumbs">
+      <button class="button" id="01">
+        <img src="src/assets/illustration/01t.jpg" alt="thumb 1" />
+      </button>
+      <button class="button" id="02">
+        <img src="src/assets/illustration/02t.jpg" alt="thumb 2" />
+      </button>
+      <button class="button" id="03">
+        <img src="src/assets/illustration/03t.jpg" alt="thumb 3" />
+      </button>
+      <button class="button" id="04">
+        <img src="src/assets/illustration/04t.jpg" alt="thumb 4" />
+      </button>
+      <button class="button" id="05">
+        <img src="src/assets/illustration/05t.jpg" alt="thumb 5" />
+      </button>
+      <button class="button" id="06">
+        <img src="src/assets/illustration/06t.jpg" alt="thumb 6" />
+      </button>
+      <button class="button" id="07">
+        <img src="src/assets/illustration/07t.jpg" alt="thumb 7" />
+      </button>
+      <button class="button" id="08">
+        <img src="src/assets/illustration/08t.jpg" alt="thumb 8" />
+      </button>
+      <button class="button" id="09">
+        <img src="src/assets/illustration/09t.jpg" alt="thumb 9" />
+      </button>
+      <button class="button" id="10">
+        <img src="src/assets/illustration/10t.jpg" alt="thumb 10" />
+      </button>
+      <button class="button" id="11">
+        <img src="src/assets/illustration/11t.jpg" alt="thumb 11" />
+      </button>
+      <button class="button" id="12">
+        <img src="src/assets/illustration/12t.jpg" alt="thumb 12" />
+      </button>
+      <button class="button" id="13">
+        <img src="src/assets/illustration/13t.jpg" alt="thumb 13" />
+      </button>
+      <button class="button" id="14">
+        <img src="src/assets/illustration/14t.jpg" alt="thumb 14" />
+      </button>
+      <button class="button" id="15">
+        <img src="src/assets/illustration/15t.jpg" alt="thumb 15" />
+      </button>
+      <button class="button" id="16">
+        <img src="src/assets/illustration/16t.jpg" alt="thumb 16" />
+      </button>
+      <button class="button" id="17">
+        <img src="src/assets/illustration/17t.jpg" alt="thumb 17" />
+      </button>
+      <button class="button" id="18">
+        <img src="src/assets/illustration/18t.jpg" alt="thumb 18" />
+      </button>
+      <button class="button" id="019">
+        <img src="src/assets/illustration/19t.jpg" alt="thumb 19" />
+      </button>
+      <button class="button" id="20">
+        <img src="src/assets/illustration/20t.jpg" alt="thumb 20" />
+      </button>
+      <button class="button" id="21">
+        <img src="src/assets/illustration/21t.jpg" alt="thumb 21" />
+      </button>
+    </div>
+    <div>
+      <img id="hero" src="src/assets/illustration/01.jpg" alt="" />
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const thumbs = document.querySelectorAll('.button');
+  const img = document.getElementById('hero');
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      img.src = thumb.querySelector('img').src.replace('t.jpg', '.jpg');
+    });
+  });
+</script>
+
+<style>
+  .wrap {
+    display: flex;
+    width: 100%;
+    height: 615px;
+    gap: 6px;
+  }
+  .thumbs {
+    display: grid;
+    overflow: scroll;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 6px;
+  }
+  .button {
+    border: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .button img {
+    display: block;
+  }
+    
+  img {
+    width: 100%;
+  }
+</style>

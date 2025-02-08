@@ -1,0 +1,28 @@
+---
+import Nav from "./Nav.astro"
+---
+
+<header class="header">
+  <h1><a href="/">Mark S. Fisher</a></h1>
+  <Nav />
+</header>
+
+<style>
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1051px;
+    margin: 0 auto 1rem;
+    padding: 0 0 1rem;
+    border-bottom: 3px solid #ccc;
+  }
+  h1 {
+    margin: 0;
+    color: #fff;
+  }
+  h1 a {
+    text-decoration: none;
+    color: #fff;
+  }
+</style>
