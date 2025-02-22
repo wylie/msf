@@ -1,11 +1,16 @@
 ---
+import { getImage } from "astro:assets";
 import Layout from '../layouts/Layout.astro';
+import stars from  "../assets/jupiterjak/stars.png";
 import jupiter from  "../assets/jupiterjak/jupiter.png";
+const starsImage = await getImage({src: stars, format: 'avif'})
+const jupiterImage = await getImage({src: jupiter, format: 'avif'})
+
 ---
 
 <Layout>
-  <div class="bg">
-    <div class="image"></div>
+  <div class="bg" style={`background-image: url(${starsImage.src});`}>
+    <div class="image" style={`background-image: url(${jupiterImage.src});`}></div>
   </div>
 </Layout>
 
@@ -14,10 +19,9 @@ import jupiter from  "../assets/jupiterjak/jupiter.png";
     display: flex;
     justify-content: center;
     width: 100%;
-    background: #231f20 url('../assets/jupiterjak/stars.png');
+    background-color: #231f20;
   }
   .image {
-    background-image: url('../assets/jupiterjak/jupiter.png');
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
