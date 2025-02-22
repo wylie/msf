@@ -1,8 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 
 import mainImg from '../assets/illustration/01.jpg';
-import thumb4 from '/msf/src/assets/illustration/04t.jpg';
+import thumb4 from '../assets/illustration/04t.jpg';
 ---
 <Layout>
   <div class="wrap">
@@ -14,10 +15,10 @@ import thumb4 from '/msf/src/assets/illustration/04t.jpg';
         <img src="../src/assets/illustration/02t.jpg" alt="thumb 2" />
       </button>
       <button class="button" id="03">
-        <img src="../assets/illustration/03t.jpg" alt="thumb 3" />
+        <img src="../src/assets/illustration/03t.jpg" alt="thumb 3" />
       </button>
       <button class="button" id="04">
-        <img src={thumb4.src} alt="thumb 4" />
+        <Image src={thumb4} alt="thumb 1" />
       </button>
       <button class="button" id="05">
         <img src="src/assets/illustration/05t.jpg" alt="thumb 5" />
@@ -72,7 +73,7 @@ import thumb4 from '/msf/src/assets/illustration/04t.jpg';
       </button>
     </div>
     <div>
-      <img id="hero" src={mainImg.sec} alt="" />
+      <Image src={mainImg} alt="" />
     </div>
   </div>
 </Layout>
