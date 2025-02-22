@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
+
 import Layout from '../layouts/Layout.astro';
+import Thumbnail from '../components/thumbnail.astro';
 
 import main1 from '../assets/illustration/01.jpg';
 import main2 from '../assets/illustration/02.jpg';
@@ -23,97 +25,139 @@ import main18 from '../assets/illustration/18.jpg';
 import main19 from '../assets/illustration/19.jpg';
 import main20 from '../assets/illustration/20.jpg';
 import main21 from '../assets/illustration/21.jpg';
-import thumb1 from '../assets/illustration/01t.jpg';
-import thumb2 from '../assets/illustration/02t.jpg';
-import thumb3 from '../assets/illustration/03t.jpg';
-import thumb4 from '../assets/illustration/04t.jpg';
-import thumb5 from '../assets/illustration/05t.jpg';
-import thumb6 from '../assets/illustration/06t.jpg';
-import thumb7 from '../assets/illustration/07t.jpg';
-import thumb8 from '../assets/illustration/08t.jpg';
-import thumb9 from '../assets/illustration/09t.jpg';
-import thumb10 from '../assets/illustration/10t.jpg';
-import thumb11 from '../assets/illustration/11t.jpg';
-import thumb12 from '../assets/illustration/12t.jpg';
-import thumb13 from '../assets/illustration/13t.jpg';
-import thumb14 from '../assets/illustration/14t.jpg';
-import thumb15 from '../assets/illustration/15t.jpg';
-import thumb16 from '../assets/illustration/16t.jpg';
-import thumb17 from '../assets/illustration/17t.jpg';
-import thumb18 from '../assets/illustration/18t.jpg';
-import thumb19 from '../assets/illustration/19t.jpg';
-import thumb20 from '../assets/illustration/20t.jpg';
-import thumb21 from '../assets/illustration/21t.jpg';
 ---
 <Layout>
   <div class="wrap">
     <div class="thumbs">
       <button class="button" id="01">
-        <Image src={thumb1} alt="thumb 1" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/01t.jpg"
+          altText="Thumb 1"
+        />
       </button>
       <button class="button" id="02">
-        <Image src={thumb2} alt="thumb 2" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/02t.jpg"
+          altText="Thumb 2"
+        />
       </button>
       <button class="button" id="03">
-        <Image src={thumb3} alt="thumb 3" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/03t.jpg"
+          altText="Thumb 3"
+        />
       </button>
       <button class="button" id="04">
-        <Image src={thumb4} alt="thumb 4" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/04t.jpg"
+          altText="Thumb 4"
+        />
       </button>
       <button class="button" id="05">
-        <Image src={thumb5} alt="thumb 5" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/05t.jpg"
+          altText="Thumb 5"
+        />
       </button>
       <button class="button" id="06">
-        <Image src={thumb6} alt="thumb 6" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/06t.jpg"
+          altText="Thumb 6"
+        />
       </button>
       <button class="button" id="07">
-        <Image src={thumb7} alt="thumb 7" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/07t.jpg"
+          altText="Thumb 7"
+        />
       </button>
       <button class="button" id="08">
-        <Image src={thumb8} alt="thumb 8" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/08t.jpg"
+          altText="Thumb 8"
+        />
       </button>
       <button class="button" id="09">
-        <Image src={thumb9} alt="thumb 9" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/09t.jpg"
+          altText="Thumb 9"
+        />
       </button>
       <button class="button" id="10">
-        <Image src={thumb10} alt="thumb 10" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/10t.jpg"
+          altText="Thumb 10"
+        />
       </button>
       <button class="button" id="11">
-        <Image src={thumb11} alt="thumb 11" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/11t.jpg"
+          altText="Thumb 11"
+        />
       </button>
       <button class="button" id="12">
-        <Image src={thumb12} alt="thumb 12" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/12t.jpg"
+          altText="Thumb 12"
+        />
       </button>
       <button class="button" id="13">
-        <Image src={thumb13} alt="thumb 13" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/13t.jpg"
+          altText="Thumb 13"
+        />
       </button>
       <button class="button" id="14">
-        <Image src={thumb14} alt="thumb 14" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/14t.jpg"
+          altText="Thumb 14"
+        />
       </button>
       <button class="button" id="15">
-        <Image src={thumb15} alt="thumb 15" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/15t.jpg"
+          altText="Thumb 15"
+        />
       </button>
       <button class="button" id="16">
-        <Image src={thumb16} alt="thumb 16" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/16t.jpg"
+          altText="Thumb 16"
+        />
       </button>
       <button class="button" id="17">
-        <Image src={thumb17} alt="thumb 17" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/17t.jpg"
+          altText="Thumb 17"
+        />
       </button>
       <button class="button" id="18">
-        <Image src={thumb18} alt="thumb 18" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/18t.jpg"
+          altText="Thumb 18"
+        />
       </button>
-      <button class="button" id="019">
-        <Image src={thumb19} alt="thumb 19" />
+      <button class="button" id="19">
+        <Thumbnail
+          imagePath="/src/assets/illustration/19t.jpg"
+          altText="Thumb 19"
+        />
       </button>
       <button class="button" id="20">
-        <Image src={thumb20} alt="thumb 20" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/20t.jpg"
+          altText="Thumb 20"
+        />
       </button>
       <button class="button" id="21">
-        <Image src={thumb21} alt="thumb 21" />
+        <Thumbnail
+          imagePath="/src/assets/illustration/21t.jpg"
+          altText="Thumb 21"
+        />
       </button>
     </div>
     <div>
-      <Image src={main1} alt="" />
+      <Image id="hero" src={main1} alt="" width="936" height="621" />
     </div>
   </div>
 </Layout>
@@ -124,7 +168,9 @@ import thumb21 from '../assets/illustration/21t.jpg';
 
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', () => {
-      img = thumb.querySelector('img').src.replace('t.jpg', '.jpg');
+      const thumbId = thumb.id;
+      const mainImgSrc = `/src/assets/illustration/${thumbId}.jpg`;
+      img.src = mainImgSrc;
     });
   });
 </script>
@@ -151,8 +197,8 @@ import thumb21 from '../assets/illustration/21t.jpg';
   .button img {
     display: block;
   }
-    
-  img {
+  #hero {
     width: 100%;
+    object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
   }
 </style>
