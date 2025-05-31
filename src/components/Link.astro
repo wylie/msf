@@ -1,0 +1,26 @@
+---
+const { url, image, alt } = Astro.props;
+---
+
+<div>
+	<a href={url} target="_blank">
+		<img src=`/msf/img/${image}.png` alt={alt} />
+	</a>
+</div>
+
+<style>
+	a {
+		display: inline-block;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		filter: drop-shadow(0 0 0 #666);
+	}
+	a:hover {
+		margin-top: -5px;
+		filter: drop-shadow(0 3px 3px #666);
+	}
+	img {
+		max-width: 200px;
+		width: 100%;
+	}
+</style>
