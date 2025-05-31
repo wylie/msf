@@ -2,21 +2,21 @@
 const { url, image, alt } = Astro.props;
 ---
 
-<div>
-	<a href={url} target="_blank">
-		<img src=`/msf/img/${image}.png` alt={alt} />
-	</a>
-</div>
+<a href={url} target="_blank">
+	<img src=`/msf/img/${image}.png` alt={alt} />
+</a>
 
 <style>
 	a {
+		position: relative;
+		top: 0;
 		display: inline-block;
 		cursor: pointer;
 		transition: all 0.3s ease;
 		filter: drop-shadow(0 0 0 #666);
 	}
 	a:hover {
-		margin-top: -5px;
+		top: -5px;
 		filter: drop-shadow(0 3px 3px #666);
 	}
 	img {

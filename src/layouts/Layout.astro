@@ -1,36 +1,85 @@
 ---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+}
 
+const { 
+  title = "Mark S. Fisher", 
+  description = "Personal website of Mark S. Fisher", 
+  image = "/msf/img/social-share.png", 
+  url = Astro.url
+} = Astro.props;
+
+// Safe canonical URL creation
+let canonicalURL;
+try {
+  canonicalURL = new URL(Astro.url.pathname, Astro.site);
+} catch (error) {
+  canonicalURL = Astro.url.pathname;
+}
 ---
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Mark S. Fisher</title>
-	</head>
-	<body>
-		<main>
-			<slot />
-		</main>
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        
+        <!-- Favicon and App Icons -->
+        <link rel="icon" href="/msf/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/msf/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/msf/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/msf/favicon-16x16.png" />
+        <link rel="manifest" href="/msf/site.webmanifest" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff" />
+        
+        <!-- Primary Meta Tags -->
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href={canonicalURL} />
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={url} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={image} />
+    </head>
+    <body>
+        <main>
+            <slot />
+        </main>
+    </body>
 </html>
 
 <style>
-	html, body {
-		margin: 0;
-		padding: 0;
-		display: flex;
-		align-items: center;
-		height: 100vh;
-		justify-content: center;
-		background-color: #ccc;
-	}
-	main {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		gap: 2rem;
-	}
+    html, body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+        background-color: #ccc;
+    }
+    main {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
 </style>
