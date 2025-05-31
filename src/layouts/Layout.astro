@@ -1,4 +1,6 @@
 ---
+import ShareImage from '../assets/images/social-share.png'
+
 interface Props {
   title?: string;
   description?: string;
@@ -9,7 +11,7 @@ interface Props {
 const { 
   title = "Mark S. Fisher", 
   description = "Personal website of Mark S. Fisher", 
-  image = "/msf/img/social-share.png", 
+  image = ShareImage, 
   url = Astro.url
 } = Astro.props;
 
