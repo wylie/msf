@@ -1,5 +1,6 @@
 ---
 import ShareImage from '../assets/images/social-share.png'
+import Favicon from '../components/Favicon.astro';
 
 interface Props {
   title?: string;
@@ -31,7 +32,7 @@ try {
         <meta name="generator" content={Astro.generator} />
         
         <!-- Favicon and App Icons -->
-        <link rel="icon" href="/msf/favicon.ico" sizes="any" />
+        <Favicon />
         <link rel="apple-touch-icon" sizes="180x180" href="/msf/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/msf/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/msf/favicon-16x16.png" />
