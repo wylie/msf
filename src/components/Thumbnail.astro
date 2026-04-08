@@ -1,0 +1,69 @@
+---
+const sourceWidth = 936;
+const sourceHeight = 621;
+const frameSize = 100;
+
+const {
+  image = "../img/hero.png",
+  src = image,
+  alt = "hero image thumbnail",
+  zoom = 1,
+  x = sourceWidth / 2,
+  y = sourceHeight / 2,
+  active = false
+} = Astro.props;
+
+const baseScale = Math.max(frameSize / sourceWidth, frameSize / sourceHeight);
+const scale = baseScale * zoom;
+const scaledWidth = sourceWidth * scale;
+const scaledHeight = sourceHeight * scale;
+const offsetX = frameSize / 2 - x * scale;
+const offsetY = frameSize / 2 - y * scale;
+---
+
+<button
+  class:list={["thumbnail", { "thumbnail--active": active }]}
+  type="button"
+  data-hero-src={src}
+  data-hero-alt={alt}
+  aria-pressed={active ? "true" : "false"}
+>
+  <div
+    class="thumbnail-image"
+    role="img"
+    aria-label={alt}
+    style={`background-image: url('${src}'); width: ${scaledWidth}px; height: ${scaledHeight}px; left: ${offsetX}px; top: ${offsetY}px;`}
+  ></div>
+</button>
+
+<style>
+  .thumbnail {
+    position: relative;
+    display: block;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    height: 100px;
+    min-height: 100px;
+    max-height: 100px;
+    flex: 0 0 100px;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 0;
+    border: 0;
+  }
+
+  .thumbnail-image {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .thumbnail--active {
+    outline: 3px solid #000;
+    outline-offset: -3px;
+  }
+</style>

@@ -26,77 +26,100 @@ try {
 ---
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        
-        <!-- Favicon and App Icons -->
-        <Favicon />
-        <link rel="apple-touch-icon" sizes="180x180" href="/msf/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/msf/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/msf/favicon-16x16.png" />
-        <link rel="manifest" href="/msf/site.webmanifest" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="theme-color" content="#ffffff" />
-        
-        <!-- Primary Meta Tags -->
-        <title>{title}</title>
-        <meta name="title" content={title} />
-        <meta name="description" content={description} />
-        
-        <!-- Canonical URL -->
-        <link rel="canonical" href={canonicalURL} />
-        
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={url} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
-        
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={url} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={image} />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Mark S. Fisher" />
-        <meta property="og:image" content={ShareImage.src} />
-        <meta property="og:image:alt" content="A drawing of Wylie under the name Wylie Fisher" />
-        <meta property="og:description" content="Ahoy! I'm Mark S. Fisher, a dad, developer, and outdoor enthusiast." />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="Wylie Fisher" />
-      </head>
-    <body>
-        <main>
-            <slot />
-        </main>
-    </body>
+    <!-- Favicon and App Icons -->
+    <Favicon />
+    <link rel="apple-touch-icon" sizes="180x180" href="/msf/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/msf/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/msf/favicon-16x16.png" />
+    <link rel="manifest" href="/msf/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mark S. Fisher" />
+    <meta property="og:image" content={ShareImage.src} />
+    <meta property="og:image:alt" content="A drawing of Wylie under the name Wylie Fisher" />
+    <meta property="og:description" content="Ahoy! I'm Mark S. Fisher, a dad, developer, and outdoor enthusiast." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Wylie Fisher" />
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
 </html>
 
 <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        height: 100vh;
-        justify-content: center;
-        background-color: #ccc;
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    justify-items: stretch;
+    /* width: min(100vw - 4rem, 1036px); */
+  }
+
+  main > :global(*) {
+    min-width: 0;
+    min-height: 0;
+  }
+
+  @media (max-width: 500px) {
+    body {
+      display: block;
+      min-height: auto;
     }
+
     main {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 2rem;
-        padding: 2rem;
+      grid-template-columns: 1fr;
+      width: 100%;
     }
-    @media (max-width: 500px) {
-      body {
-        display: block;
-      }
-    }
+  }
 </style>

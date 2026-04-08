@@ -1,0 +1,85 @@
+---
+import Thumbnail from './Thumbnail.astro';
+---
+
+<div class="thumbnails">
+  <Thumbnail image="../img/hero-01.png" x={520} y={369} zoom={7} active={true} />
+  <Thumbnail image="../img/hero-02.png" x={600} y={265} zoom={7} />
+  <Thumbnail image="../img/hero-03.png" x={410} y={220} zoom={7} />
+  <Thumbnail image="../img/hero-04.png" x={623} y={229} zoom={7} />
+  <Thumbnail image="../img/hero-05.png" x={225} y={115} zoom={7} />
+  <Thumbnail image="../img/hero-06.png" x={400} y={140} zoom={7} />
+  <Thumbnail image="../img/hero-07.png" x={462} y={539} zoom={7} />
+  <Thumbnail image="../img/hero-08.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-09.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-10.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-11.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-12.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-13.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-14.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-15.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-16.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-17.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-18.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-19.png" x={468} y={310} zoom={7} />
+  <Thumbnail image="../img/hero-20.png" x={468} y={310} zoom={7} />
+</div>
+
+<style>
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    white-space: nowrap;
+    width: 100px;
+    min-width: 100px;
+    height: 100%;
+    max-height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-self: stretch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .thumbnails::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  const heroImage = document.querySelector("[data-hero-image]");
+  const thumbnails = document.querySelector(".thumbnails");
+
+  if (heroImage instanceof HTMLImageElement && thumbnails instanceof HTMLElement) {
+    thumbnails.addEventListener("click", (event) => {
+      const button = event.target instanceof Element ? event.target.closest(".thumbnail") : null;
+
+      if (!(button instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      const nextSrc = button.dataset.heroSrc;
+      const nextAlt = button.dataset.heroAlt;
+
+      if (!nextSrc) {
+        return;
+      }
+
+      heroImage.src = nextSrc;
+
+      if (nextAlt) {
+        heroImage.alt = nextAlt;
+      }
+
+      thumbnails.querySelectorAll(".thumbnail").forEach((thumbnail) => {
+        if (thumbnail instanceof HTMLButtonElement) {
+          const isActive = thumbnail === button;
+          thumbnail.classList.toggle("thumbnail--active", isActive);
+          thumbnail.setAttribute("aria-pressed", isActive ? "true" : "false");
+        }
+      });
+    });
+  }
+</script>

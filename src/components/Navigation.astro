@@ -1,0 +1,62 @@
+---
+const { style } = Astro.props;
+import Section from './Section.astro';
+---
+
+<Section style={style}>
+  <div>
+    <span class="name special">Mark S Fisher</span>
+    <span class="contact material-icons">mail</span>
+    <span class="social material-icons">settings</span>
+  </div>
+</Section>
+
+<style>
+  div {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  span {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+  }
+
+  .material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .special {
+    font-family: "Chango", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 36px;
+  }
+  span {
+    padding: 1rem;
+  }
+  .name {
+    width: 100%;
+  }
+  .contact,
+  .social {
+    max-width: 50px;
+  }
+</style>
