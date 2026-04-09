@@ -5,9 +5,11 @@ import Section from './Section.astro';
 
 <Section style={style}>
   <div>
-    <span class="name special">Mark S Fisher</span>
+    <span class="name special">Mark S. Fisher</span>
+    <a href="https://www.instagram.com/marksfisher3/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/instagram.png" alt="Instagram" /></a>
+    <a href="https://www.behance.net/Marksfisher" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/behance.png" alt="Behance" /></a>
+    <a href="https://www.flickr.com/photos/15067667@N04/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/flickr.png" alt="Flickr" /></a>
     <a href="mailto:mark@marksfisher.com"><span class="contact material-icons">mail</span></a>
-    <a href="https://www.instagram.com/marksfisher3/" target="_blank" rel="noopener noreferrer"><img class="social" src="/instagram-brands-solid-full.svg" alt="Instagram" /></a>
   </div>
 </Section>
 
@@ -16,13 +18,23 @@ import Section from './Section.astro';
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    padding: 1rem;
     background-color: #efefef;
   }
 
   a {
+    position: relative;
+    top: 0;
     flex: 0 0 auto;
     color: inherit;
     text-decoration: none;
+    transition: top .2s ease
+  }
+  a:hover {
+    top: -2px;
+  }
+  a:active {
+    top: 2px;
   }
 
   span {
@@ -49,15 +61,15 @@ import Section from './Section.astro';
   }
 
   .special {
-    font-family: "Chango", sans-serif;
+    font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: clamp(1.25rem, 5vw, 2.25rem);
     line-height: 1;
   }
-  span {
-    padding: 1rem;
-  }
+  /* span {
+    padding: .5rem;
+  } */
   .name {
     flex: 1 1 auto;
     min-width: 0;
@@ -78,13 +90,13 @@ import Section from './Section.astro';
     display: block;
     width: 30px;
     height: 30px;
-    padding: 1rem;
+    padding: .25rem;
   }
 
   @media (max-width: 600px) {
     span,
     img {
-      padding: 0.75rem;
+      padding: 0.25rem;
     }
   }
 </style>
