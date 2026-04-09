@@ -4,22 +4,29 @@ import Section from './Section.astro';
 ---
 
 <Section style={style}>
-  <div>
+  <div class="outer">
     <span class="name special">Mark S. Fisher</span>
-    <a href="https://www.instagram.com/marksfisher3/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/instagram.png" alt="Instagram" /></a>
-    <a href="https://www.behance.net/Marksfisher" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/behance.png" alt="Behance" /></a>
-    <a href="https://www.flickr.com/photos/15067667@N04/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/flickr.png" alt="Flickr" /></a>
-    <a href="mailto:mark@marksfisher.com"><span class="contact material-icons">mail</span></a>
+    <div class="inner">
+      <a href="https://www.instagram.com/marksfisher3/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/instagram.png" alt="Instagram" /></a>
+      <a href="https://www.behance.net/Marksfisher" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/behance.png" alt="Behance" /></a>
+      <a href="https://www.flickr.com/photos/15067667@N04/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/flickr.png" alt="Flickr" /></a>
+      <a href="mailto:mark@marksfisher.com"><span class="contact material-icons">mail</span></a>
+    </div>
   </div>
 </Section>
 
 <style>
-  div {
+  .outer {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    flex-wrap: wrap;
     padding: 1rem;
     background-color: #efefef;
+  }
+  .inner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   a {
@@ -64,7 +71,7 @@ import Section from './Section.astro';
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(1.25rem, 5vw, 2.25rem);
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
     line-height: 1;
   }
   /* span {
@@ -97,6 +104,10 @@ import Section from './Section.astro';
     span,
     img {
       padding: 0.25rem;
+    }
+    .inner {
+      width: 100%;
+      justify-content: space-between;
     }
   }
 </style>

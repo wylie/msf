@@ -12,8 +12,12 @@ import Hero from '../components/Hero.astro';
 >
 	<Navigation style="grid-column: 1 / -1;" />
 	<div class="content-row">
-		<Thumbnails />
-		<Hero />
+		<div class="hero-panel">
+			<Hero />
+		</div>
+		<div class="thumbs-panel">
+			<Thumbnails />
+		</div>
 	</div>
 </Layout>
 
@@ -21,10 +25,25 @@ import Hero from '../components/Hero.astro';
 	.content-row {
 		display: grid;
 		grid-template-columns: 100px minmax(0, 1fr);
+		grid-template-areas: "thumbs hero";
 		align-items: stretch;
-		width: 100%;
+		width: min(100%, 1042px);
+		max-width: 100%;
 		aspect-ratio: 1036 / 621;
-		/* max-height: calc(100vh - 11rem); */
+		overflow: hidden;
+	}
+
+	.hero-panel {
+		grid-area: hero;
+		min-width: 0;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.thumbs-panel {
+		grid-area: thumbs;
+		min-width: 0;
+		min-height: 0;
 		overflow: hidden;
 	}
 
@@ -36,8 +55,12 @@ import Hero from '../components/Hero.astro';
 	@media (max-width: 600px) {
 		.content-row {
 			grid-template-columns: 1fr;
-			grid-template-rows: 100px auto;
+			grid-template-areas:
+				"hero"
+				"thumbs";
+			grid-template-rows: auto 100px;
 			aspect-ratio: auto;
+			height: auto;
 			max-height: none;
 		}
 	}
