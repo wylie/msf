@@ -6,20 +6,25 @@ import Section from './Section.astro';
 <Section style={style}>
   <div>
     <span class="name special">Mark S Fisher</span>
-    <span class="contact material-icons">mail</span>
-    <span class="social material-icons">settings</span>
+    <a href="mailto:mark@marksfisher.com"><span class="contact material-icons">mail</span></a>
+    <a href="https://www.instagram.com/marksfisher3/" target="_blank" rel="noopener noreferrer"><img class="social" src="/instagram-brands-solid-full.svg" alt="Instagram" /></a>
   </div>
 </Section>
 
 <style>
   div {
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
-    background-color: #fff;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    gap: 0.25rem;
+    background-color: #efefef;
   }
+
+  a {
+    flex: 0 0 auto;
+    color: inherit;
+    text-decoration: none;
+  }
+
   span {
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
@@ -47,16 +52,39 @@ import Section from './Section.astro';
     font-family: "Chango", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 36px;
+    font-size: clamp(1.25rem, 5vw, 2.25rem);
+    line-height: 1;
   }
   span {
     padding: 1rem;
   }
   .name {
-    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
   }
   .contact,
   .social {
+    color: #000;
+  }
+  .contact {
     max-width: 50px;
+  }
+  .social {
+    max-width: 35px;
+  }
+
+  img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    span,
+    img {
+      padding: 0.75rem;
+    }
   }
 </style>
