@@ -66,6 +66,12 @@ import Thumbnail from './Thumbnail.astro';
   const thumbnails = document.querySelector(".thumbnails");
 
   if (heroImage instanceof HTMLImageElement && thumbnails instanceof HTMLElement) {
+    const trackEvent = (eventName, params) => {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", eventName, params);
+      }
+    };
+
     thumbnails.addEventListener("click", (event) => {
       const button = event.target instanceof Element ? event.target.closest(".thumbnail") : null;
 
@@ -85,6 +91,15 @@ import Thumbnail from './Thumbnail.astro';
       if (nextAlt) {
         heroImage.alt = nextAlt;
       }
+
+      const allThumbnails = Array.from(thumbnails.querySelectorAll(".thumbnail"));
+      const thumbnailIndex = allThumbnails.indexOf(button);
+
+      trackEvent("thumbnail_click", {
+        thumbnail_src: nextSrc,
+        thumbnail_alt: nextAlt || "",
+        thumbnail_index: thumbnailIndex >= 0 ? thumbnailIndex + 1 : null
+      });
 
       thumbnails.querySelectorAll(".thumbnail").forEach((thumbnail) => {
         if (thumbnail instanceof HTMLButtonElement) {

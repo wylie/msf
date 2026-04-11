@@ -7,10 +7,10 @@ import Section from './Section.astro';
   <div class="outer">
     <span class="name special">Mark S. Fisher</span>
     <div class="inner">
-      <a href="https://www.instagram.com/marksfisher3/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/instagram.png" alt="Instagram" /></a>
-      <a href="https://www.behance.net/Marksfisher" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/behance.png" alt="Behance" /></a>
-      <a href="https://www.flickr.com/photos/15067667@N04/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/flickr.png" alt="Flickr" /></a>
-      <a href="mailto:mark@marksfisher.com"><span class="contact material-icons">mail</span></a>
+      <a data-nav-icon="instagram" href="https://www.instagram.com/marksfisher3/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/instagram.png" alt="Instagram" /></a>
+      <a data-nav-icon="behance" href="https://www.behance.net/Marksfisher" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/behance.png" alt="Behance" /></a>
+      <a data-nav-icon="flickr" href="https://www.flickr.com/photos/15067667@N04/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/flickr.png" alt="Flickr" /></a>
+      <a data-nav-icon="email" href="mailto:mark@marksfisher.com"><span class="contact material-icons">mail</span></a>
     </div>
   </div>
 </Section>
@@ -111,3 +111,24 @@ import Section from './Section.astro';
     }
   }
 </style>
+
+<script>
+  const navigation = document.querySelector(".outer .inner");
+
+  if (navigation instanceof HTMLElement) {
+    navigation.addEventListener("click", (event) => {
+      const link = event.target instanceof Element ? event.target.closest("a[data-nav-icon]") : null;
+
+      if (!(link instanceof HTMLAnchorElement)) {
+        return;
+      }
+
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "navigation_icon_click", {
+          icon_name: link.dataset.navIcon || "",
+          link_url: link.href
+        });
+      }
+    });
+  }
+</script>
