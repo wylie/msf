@@ -3,26 +3,26 @@ import Thumbnail from './Thumbnail.astro';
 ---
 
 <div class="thumbnails">
-  <Thumbnail image="../img/hero-01.png" x={520} y={369} zoom={7} active={true} />
-  <Thumbnail image="../img/hero-02.png" x={600} y={265} zoom={7} />
-  <Thumbnail image="../img/hero-03.png" x={410} y={220} zoom={7} />
-  <Thumbnail image="../img/hero-04.png" x={623} y={229} zoom={7} />
-  <Thumbnail image="../img/hero-05.png" x={225} y={115} zoom={7} />
-  <Thumbnail image="../img/hero-06.png" x={400} y={140} zoom={7} />
-  <Thumbnail image="../img/hero-07.png" x={462} y={539} zoom={7} />
-  <Thumbnail image="../img/hero-08.png" x={225} y={460} zoom={7} />
-  <Thumbnail image="../img/hero-09.png" x={468} y={310} zoom={7} />
-  <Thumbnail image="../img/hero-10.png" x={382} y={250} zoom={7} />
-  <Thumbnail image="../img/hero-11.png" x={120} y={400} zoom={7} />
-  <Thumbnail image="../img/hero-12.png" x={440} y={405} zoom={7} />
-  <Thumbnail image="../img/hero-13.png" x={594} y={320} zoom={7} />
-  <Thumbnail image="../img/hero-14.png" x={294} y={310} zoom={7} />
-  <Thumbnail image="../img/hero-15.png" x={135} y={230} zoom={7} />
-  <Thumbnail image="../img/hero-16.png" x={468} y={310} zoom={7} />
-  <Thumbnail image="../img/hero-17.png" x={120} y={220} zoom={7} />
-  <Thumbnail image="../img/hero-18.png" x={400} y={335} zoom={7} />
-  <Thumbnail image="../img/hero-19.png" x={260} y={80} zoom={7} />
-  <Thumbnail image="../img/hero-20.png" x={200} y={300} zoom={7} />
+  <Thumbnail thumbId={1} image="../img/hero-01.png" x={520} y={369} zoom={7} active={true} />
+  <Thumbnail thumbId={2} image="../img/hero-02.png" x={600} y={265} zoom={7} />
+  <Thumbnail thumbId={3} image="../img/hero-03.png" x={410} y={220} zoom={7} />
+  <Thumbnail thumbId={4} image="../img/hero-04.png" x={623} y={229} zoom={7} />
+  <Thumbnail thumbId={5} image="../img/hero-05.png" x={225} y={115} zoom={7} />
+  <Thumbnail thumbId={6} image="../img/hero-06.png" x={400} y={140} zoom={7} />
+  <Thumbnail thumbId={7} image="../img/hero-07.png" x={462} y={539} zoom={7} />
+  <Thumbnail thumbId={8} image="../img/hero-08.png" x={225} y={460} zoom={7} />
+  <Thumbnail thumbId={9} image="../img/hero-09.png" x={468} y={310} zoom={7} />
+  <Thumbnail thumbId={10} image="../img/hero-10.png" x={382} y={250} zoom={7} />
+  <Thumbnail thumbId={11} image="../img/hero-11.png" x={120} y={400} zoom={7} />
+  <Thumbnail thumbId={12} image="../img/hero-12.png" x={440} y={405} zoom={7} />
+  <Thumbnail thumbId={13} image="../img/hero-13.png" x={594} y={320} zoom={7} />
+  <Thumbnail thumbId={14} image="../img/hero-14.png" x={294} y={310} zoom={7} />
+  <Thumbnail thumbId={15} image="../img/hero-15.png" x={135} y={230} zoom={7} />
+  <Thumbnail thumbId={16} image="../img/hero-16.png" x={468} y={310} zoom={7} />
+  <Thumbnail thumbId={17} image="../img/hero-17.png" x={120} y={220} zoom={7} />
+  <Thumbnail thumbId={18} image="../img/hero-18.png" x={400} y={335} zoom={7} />
+  <Thumbnail thumbId={19} image="../img/hero-19.png" x={260} y={80} zoom={7} />
+  <Thumbnail thumbId={20} image="../img/hero-20.png" x={200} y={300} zoom={7} />
 </div>
 
 <style>
@@ -94,10 +94,12 @@ import Thumbnail from './Thumbnail.astro';
 
       const allThumbnails = Array.from(thumbnails.querySelectorAll(".thumbnail"));
       const thumbnailIndex = allThumbnails.indexOf(button);
+      const thumbnailId = Number(button.dataset.thumbnailId) || null;
 
       trackEvent("thumbnail_click", {
         thumbnail_src: nextSrc,
         thumbnail_alt: nextAlt || "",
+        thumbnail_id: thumbnailId,
         thumbnail_index: thumbnailIndex >= 0 ? thumbnailIndex + 1 : null
       });
 

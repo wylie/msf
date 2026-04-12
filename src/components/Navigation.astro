@@ -123,11 +123,20 @@ import Section from './Section.astro';
         return;
       }
 
+      const iconName = link.dataset.navIcon || "";
+
       if (typeof window.gtag === "function") {
         window.gtag("event", "navigation_icon_click", {
-          icon_name: link.dataset.navIcon || "",
+          icon_name: iconName,
           link_url: link.href
         });
+
+        if (iconName) {
+          window.gtag("event", `${iconName}_click`, {
+            icon_name: iconName,
+            link_url: link.href
+          });
+        }
       }
     });
   }
