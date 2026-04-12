@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marksfisher.com/sitemap.xml

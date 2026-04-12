@@ -16,6 +16,10 @@ const {
   url = Astro.url
 } = Astro.props;
 
+const siteName = "Mark S. Fisher";
+const imagePath = typeof image === "string" ? image : image.src;
+const pageUrlValue = typeof url === "string" ? url : url.toString();
+
 // Safe canonical URL creation
 let canonicalURL;
 try {
@@ -23,6 +27,32 @@ try {
 } catch (error) {
   canonicalURL = Astro.url.pathname;
 }
+
+let canonicalHref = typeof canonicalURL === "string" ? canonicalURL : canonicalURL.toString();
+let pageUrl = pageUrlValue;
+let socialImageUrl = imagePath;
+
+try {
+  canonicalHref = new URL(canonicalHref, Astro.site).toString();
+  pageUrl = new URL(pageUrlValue, Astro.site).toString();
+  socialImageUrl = new URL(imagePath, Astro.site).toString();
+} catch (error) {
+  // Keep relative values if absolute URL composition fails.
+}
+
+const personStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteName,
+  url: Astro.site?.toString() || pageUrl,
+  image: socialImageUrl,
+  sameAs: [
+    "https://www.instagram.com/marksfisher3/",
+    "https://www.behance.net/Marksfisher",
+    "https://www.flickr.com/photos/15067667@N04/"
+  ],
+  email: "mailto:mark@marksfisher.com"
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -64,31 +94,29 @@ try {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     
     <!-- Canonical URL -->
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="canonical" href={canonicalHref} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={url} />
+    <meta property="og:url" content={pageUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content="Artwork by Mark S. Fisher" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content={siteName} />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={url} />
+    <meta property="twitter:url" content={pageUrl} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
+    <meta property="twitter:image" content={socialImageUrl} />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Mark S. Fisher" />
-    <meta property="og:image" content={ShareImage.src} />
-    <meta property="og:image:alt" content="A drawing of Wylie under the name Wylie Fisher" />
-    <meta property="og:description" content="Ahoy! I'm Mark S. Fisher, a dad, developer, and outdoor enthusiast." />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content="Wylie Fisher" />
+    <script type="application/ld+json" set:html={JSON.stringify(personStructuredData)} />
   </head>
   <body>
     <main id="main-content">
