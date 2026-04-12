@@ -11,14 +11,14 @@ import Hero from '../components/Hero.astro';
   image="/msf/img/custom-social-image.png"
 >
 	<Navigation style="grid-column: 1 / -1;" />
-	<div class="content-row">
-		<div class="hero-panel">
+	<section class="content-row" aria-label="Artwork gallery">
+		<section class="hero-panel" aria-label="Selected image">
 			<Hero />
-		</div>
-		<div class="thumbs-panel">
+		</section>
+		<aside class="thumbs-panel" aria-label="Image thumbnails">
 			<Thumbnails />
-		</div>
-	</div>
+		</aside>
+	</section>
 </Layout>
 
 <style>

@@ -2,17 +2,35 @@
 const { style } = Astro.props;
 ---
 
-<div class="wrap" style={style}>
+<header class="wrap" style={style}>
   <div class="outer">
-    <span class="name special">Mark S. Fisher</span>
-    <div class="inner">
-      <a data-nav-icon="instagram" href="https://www.instagram.com/marksfisher3/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/instagram.png" alt="Instagram" /></a>
-      <a data-nav-icon="behance" href="https://www.behance.net/Marksfisher" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/behance.png" alt="Behance" /></a>
-      <a data-nav-icon="flickr" href="https://www.flickr.com/photos/15067667@N04/" target="_blank" rel="noopener noreferrer"><img class="social" src="/img/flickr.png" alt="Flickr" /></a>
-      <a data-nav-icon="email" href="mailto:mark@marksfisher.com"><span class="contact material-icons">mail</span></a>
-    </div>
+    <h1 class="name special">Mark S. Fisher</h1>
+    <nav aria-label="Social and contact links">
+      <ul class="inner">
+        <li>
+          <a data-nav-icon="instagram" href="https://www.instagram.com/marksfisher3/" target="_blank" rel="noopener noreferrer" aria-label="Visit Mark S. Fisher on Instagram">
+            <img class="social" src="/img/instagram.png" alt="" />
+          </a>
+        </li>
+        <li>
+          <a data-nav-icon="behance" href="https://www.behance.net/Marksfisher" target="_blank" rel="noopener noreferrer" aria-label="Visit Mark S. Fisher on Behance">
+            <img class="social" src="/img/behance.png" alt="" />
+          </a>
+        </li>
+        <li>
+          <a data-nav-icon="flickr" href="https://www.flickr.com/photos/15067667@N04/" target="_blank" rel="noopener noreferrer" aria-label="Visit Mark S. Fisher on Flickr">
+            <img class="social" src="/img/flickr.png" alt="" />
+          </a>
+        </li>
+        <li>
+          <a data-nav-icon="email" href="mailto:mark@marksfisher.com" aria-label="Email Mark S. Fisher">
+            <span class="contact material-icons" aria-hidden="true">mail</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
-</div>
+</header>
 
 <style>
   .wrap {
@@ -26,9 +44,19 @@ const { style } = Astro.props;
     background-color: #efefef;
   }
   .inner {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+  nav {
+    width: auto;
+  }
+  li {
+    margin: 0;
+    padding: 0;
   }
 
   a {
@@ -37,7 +65,7 @@ const { style } = Astro.props;
     flex: 0 0 auto;
     color: inherit;
     text-decoration: none;
-    transition: top .2s ease
+    transition: top .2s ease;
   }
   a:hover {
     top: -2px;
@@ -45,13 +73,9 @@ const { style } = Astro.props;
   a:active {
     top: 2px;
   }
-
-  span {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
+  a:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 2px;
   }
 
   .material-icons {
@@ -76,13 +100,12 @@ const { style } = Astro.props;
     font-size: clamp(1.75rem, 5vw, 2.25rem);
     line-height: 1;
   }
-  /* span {
-    padding: .5rem;
-  } */
+
   .name {
     flex: 1 1 auto;
     min-width: 0;
     white-space: nowrap;
+    margin: 0;
   }
   .contact,
   .social {
@@ -102,8 +125,17 @@ const { style } = Astro.props;
     padding: .25rem;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    a {
+      transition: none;
+    }
+  }
+
   @media (max-width: 600px) {
-    span,
+    nav {
+      width: 100%;
+    }
+    .contact,
     img {
       padding: 0.25rem;
     }
@@ -115,7 +147,7 @@ const { style } = Astro.props;
 </style>
 
 <script>
-  const navigation = document.querySelector(".outer .inner");
+  const navigation = document.querySelector(".inner");
 
   if (navigation instanceof HTMLElement) {
     navigation.addEventListener("click", (event) => {

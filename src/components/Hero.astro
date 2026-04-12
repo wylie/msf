@@ -2,9 +2,9 @@
 const { src = "../img/hero-01.png", alt = "hero image" } = Astro.props;
 ---
 
-<div class="hero">
-  <img src={src} alt={alt} data-hero-image />
-</div>
+<figure class="hero" aria-live="polite" aria-atomic="true">
+  <img id="hero-image" src={src} alt={alt} data-hero-image />
+</figure>
 
 <style>
   .hero {
@@ -14,6 +14,7 @@ const { src = "../img/hero-01.png", alt = "hero image" } = Astro.props;
     min-height: 0;
     overflow: hidden;
     background-color: #fff;
+    margin: 0;
   }
   img {
     display: block;

@@ -2,7 +2,7 @@
 import Thumbnail from './Thumbnail.astro';
 ---
 
-<div class="thumbnails">
+<div class="thumbnails" role="group" aria-label="Choose a gallery image">
   <Thumbnail thumbId={1} image="../img/hero-01.png" x={520} y={369} zoom={7} active={true} />
   <Thumbnail thumbId={2} image="../img/hero-02.png" x={600} y={265} zoom={7} />
   <Thumbnail thumbId={3} image="../img/hero-03.png" x={410} y={220} zoom={7} />
@@ -72,13 +72,7 @@ import Thumbnail from './Thumbnail.astro';
       }
     };
 
-    thumbnails.addEventListener("click", (event) => {
-      const button = event.target instanceof Element ? event.target.closest(".thumbnail") : null;
-
-      if (!(button instanceof HTMLButtonElement)) {
-        return;
-      }
-
+    const activateThumbnail = (button) => {
       const nextSrc = button.dataset.heroSrc;
       const nextAlt = button.dataset.heroAlt;
 
@@ -110,6 +104,48 @@ import Thumbnail from './Thumbnail.astro';
           thumbnail.setAttribute("aria-pressed", isActive ? "true" : "false");
         }
       });
+    };
+
+    thumbnails.addEventListener("click", (event) => {
+      const button = event.target instanceof Element ? event.target.closest(".thumbnail") : null;
+
+      if (!(button instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      activateThumbnail(button);
+    });
+
+    thumbnails.addEventListener("keydown", (event) => {
+      if (!(event.target instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      const isHorizontal = window.matchMedia("(max-width: 600px)").matches;
+      const nextKey = isHorizontal ? "ArrowRight" : "ArrowDown";
+      const prevKey = isHorizontal ? "ArrowLeft" : "ArrowUp";
+
+      if (event.key !== nextKey && event.key !== prevKey) {
+        return;
+      }
+
+      event.preventDefault();
+
+      const buttons = Array.from(thumbnails.querySelectorAll(".thumbnail")).filter(
+        (thumbnail) => thumbnail instanceof HTMLButtonElement
+      );
+      const currentIndex = buttons.indexOf(event.target);
+
+      if (currentIndex < 0) {
+        return;
+      }
+
+      const direction = event.key === nextKey ? 1 : -1;
+      const nextIndex = (currentIndex + direction + buttons.length) % buttons.length;
+      const nextButton = buttons[nextIndex];
+
+      nextButton.focus();
+      activateThumbnail(nextButton);
     });
   }
 </script>

@@ -20,6 +20,7 @@ const scaledWidth = sourceWidth * scale;
 const scaledHeight = sourceHeight * scale;
 const offsetX = frameSize / 2 - x * scale;
 const offsetY = frameSize / 2 - y * scale;
+const buttonLabel = thumbId ? `Show image ${thumbId}` : alt;
 ---
 
 <button
@@ -29,11 +30,12 @@ const offsetY = frameSize / 2 - y * scale;
   data-hero-alt={alt}
   data-thumbnail-id={thumbId}
   aria-pressed={active ? "true" : "false"}
+  aria-label={buttonLabel}
+  aria-controls="hero-image"
 >
   <div
     class="thumbnail-image"
-    role="img"
-    aria-label={alt}
+    aria-hidden="true"
     style={`background-image: url('${src}'); width: ${scaledWidth}px; height: ${scaledHeight}px; left: ${offsetX}px; top: ${offsetY}px;`}
   ></div>
 </button>
@@ -67,6 +69,11 @@ const offsetY = frameSize / 2 - y * scale;
   .thumbnail--active {
     outline-offset: -3px;
     opacity: .5;
+  }
+
+  .thumbnail:focus-visible {
+    outline: 3px solid #111;
+    outline-offset: -3px;
   }
 
   @media (max-width: 600px) {
