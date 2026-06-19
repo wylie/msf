@@ -4,7 +4,7 @@ const { style } = Astro.props;
 
 <header class="wrap" style={style}>
   <div class="outer">
-    <h1 class="name special">Mark S. Fisher</h1>
+    <h1 class="name special"><a href="/">Mark S. Fisher</a></h1>
     <nav aria-label="Social and contact links">
       <ul class="inner">
         <li>
@@ -76,6 +76,10 @@ const { style } = Astro.props;
   a:focus-visible {
     outline: 2px solid #111;
     outline-offset: 2px;
+  }
+  .name a:hover,
+  .name a:active {
+    top: 0;
   }
 
   .material-icons {
